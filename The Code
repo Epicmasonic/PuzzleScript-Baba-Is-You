@@ -1,0 +1,462 @@
+title Baba Is You x Word Order
+
+background_color #15181F
+
+run_rules_on_level_start
+realtime_interval 0.2
+
+=====
+TAGS
+=====
+
+Noun = Baba Flag Wall Rock
+Wordiness = Real Word
+Rule = You Win Stop Push
+
+Wobble = W1 W2 W3	
+Step = S1 S2 S3 S4
+
+NotBaba = Flag Wall Rock
+NotFlag = Baba Wall Rock
+NotWall = Baba Flag Rock
+NotRock = Baba Flag Wall
+
+TextMode = SVO VSO VOS SOV OSV OVS
+Active = On Off
+
+=========
+MAPPINGS
+=========
+
+Step => NextStep
+S1 S2 S3 S4 -> S2 S3 S4 S1
+
+Wobble => NextWobble
+W1 W2 W3 -> W2 W3 W1
+
+Noun => NotNoun
+Baba Flag Wall Rock -> NotBaba NotFlag NotWall NotRock
+
+========
+OBJECTS
+========
+
+Background
+#080808
+
+Mode:TextMode
+Transparent
+
+Marker
+Transparent
+
+RuleMarker:Rule:Noun
+Transparent
+
+ObjectMarker:Noun
+Transparent
+
+Player:Wobble
+Transparent
+
+IsYou
+Transparent
+
+IsWin
+Transparent
+
+IsStop
+Transparent
+
+MaybeCollision:Noun
+Transparent
+
+MaybeCollisionText
+Transparent
+
+Collision:Noun
+Transparent
+
+CollisionText
+Transparent
+
+ActiveMarker
+Transparent
+
+==========
+(Objects)
+==========
+
+Object:Baba:Real:directions:Step
+#FFFFFF #080808
+.....
+00000
+00101
+00000
+0...0
+
+Object:Flag:Real:directions:Step
+#ede285 #69653d
+.100.
+.1000
+.100.
+.1...
+.1...
+
+Object:Wall:Real:directions:Step
+#293141 #13171E
+00010
+11111
+01000
+11111
+00010
+
+Object:Rock:Real:directions:Step
+#C29E46 #423618
+.000.
+00000
+01000
+00100
+.000.
+
+========
+(Nouns)
+========
+
+Object:Baba:Word:directions:Step
+#d9396a
+.00..
+.0.0.
+.00..
+.0.0.
+.00..
+
+Object:Flag:Word:directions:Step
+#ede285
+.000.
+.0...
+.000.
+.0...
+.0...
+
+Object:Wall:Word:directions:Step
+#737373
+0.0.0
+0.0.0
+0.0.0
+0.0.0
+00000
+
+Object:Rock:Word:directions:Step
+#8a633c
+.00..
+.0.0.
+.00..
+.0.0.
+.0.0.
+
+=============
+(Properties)
+=============
+
+Property:You:directions
+#d9396a
+0.0.0
+0.0.0
+00.00
+00.00
+00.00
+
+Property:Win:directions
+#ede285
+00000
+.0.0.
+.0.0.
+0.0.0
+00000
+
+Property:Stop:directions
+#4b5c1c
+0...0
+0.000
+0...0
+000.0
+0...0
+
+Property:Push:directions
+#90673e
+0..00
+0.0.0
+0..00
+0.000
+0.000
+
+========
+(Verbs)
+========
+
+Is:directions
+#FFFFFF
+0.000
+0.0..
+0.000
+0...0
+0.000
+
+==============
+(Specal Text)
+==============
+
+WordOrderSubject:directions
+#d9396a
+.000.
+.0...
+.000.
+...0.
+.000.
+
+WordOrderVerb:directions
+#FFFFFF
+.0.0.
+.0.0.
+.0.0.
+.0.0.
+..0..
+
+WordOrderObject:directions
+#d9396a
+.000.
+.0.0.
+.0.0.
+.0.0.
+.000.
+
+==============
+(Decorations)
+==============
+
+Cross:Wobble
+#c45a98
+0...0
+.0.0.
+..0..
+.0.0.
+0...0
+
+=======
+LEGEND
+=======
+
+Text = Object:Noun:Word:directions:Step or Property:Rule:directions or Is:directions or WordOrderSubject:directions or WordOrderVerb:directions or WordOrderObject:directions
+
+Anything = Object:Noun:Real:directions:Step or Text
+Player = Player:Wobble
+
+=======
+
+. = Background
+a = Player:W1
+
+1 = WordOrderSubject:right
+2 = WordOrderVerb:right
+3 = WordOrderObject:right
+
+=======
+
++ = Object:Baba:Real:right:S1
+t = Object:Flag:Real:right:S1
+# = Object:Wall:Real:right:S1
+O = Object:Rock:Real:right:S1
+
+=======
+
+I = Is:right
+
+=======
+
+B = Object:Baba:Word:right:S1
+F = Object:Flag:Word:right:S1
+W = Object:Wall:Word:right:S1
+R = Object:Rock:Word:right:S1
+
+=======
+
+Y = Property:You:right
+M = Property:Win:right
+S = Property:Stop:right
+P = Property:Push:right
+
+=======
+SOUNDS
+=======
+
+================
+COLLISIONLAYERS
+================
+
+Background
+Player
+
+IsYou
+IsWin
+IsStop
+
+Marker
+Rule Noun -> RuleMarker:Rule:Noun
+ActiveMarker
+Noun -> ObjectMarker:Noun
+
+Noun -> MaybeCollision:Noun
+MaybeCollisionText
+
+Object:Wall:Real:directions:Step Collision:Wall
+Object:Flag:Real:directions:Step Collision:Flag
+Object:Rock:Real:directions:Step Collision:Rock
+Object:Baba:Real:directions:Step Collision:Baba
+
+Text CollisionText
+TextMode -> Mode:TextMode
+Cross:Wobble
+
+======
+RULES
+======
+
+(Clean up)
+[ RuleMarker:Rule:Noun ] -> [ ]
+[ ActiveMarker ] -> [ ]
+[ Mode:TextMode ] -> [ ]
+
+[ Collision:Noun ] -> [ ]
+[ CollisionText ] -> [ ]
+
+[ IsYou ] -> [ ]
+[ IsWin ] -> [ ]
+[ IsStop ] -> [ ]
+
+===============
+(Main Gimmick)
+===============
+
+(SVO = Baba Is You)
+Right [ Player ] [ WordOrderSubject:directions | WordOrderverb:directions | WordOrderObject:directions ] -> [ Player Mode:SVO ] [ WordOrderSubject:directions | WordOrderverb:directions | WordOrderObject:directions ]
+Down [ Player ] [ WordOrderSubject:directions | WordOrderverb:directions | WordOrderObject:directions ] -> [ Player Mode:SVO ] [ WordOrderSubject:directions | WordOrderverb:directions | WordOrderObject:directions ]
+
+(VSO = Is Baba You)
+Right [ Player ] [ WordOrderverb:directions | WordOrderSubject:directions | WordOrderObject:directions ] -> [ Player Mode:VSO ] [ WordOrderverb:directions | WordOrderSubject:directions | WordOrderObject:directions ]
+Down [ Player ] [ WordOrderverb:directions | WordOrderSubject:directions | WordOrderObject:directions ] -> [ Player Mode:VSO ] [ WordOrderverb:directions | WordOrderSubject:directions | WordOrderObject:directions ]
+
+(VOS = Is You Baba)
+Right [ Player ] [ WordOrderverb:directions | WordOrderObject:directions | WordOrderSubject:directions ] -> [ Player Mode:VOS ] [ WordOrderverb:directions | WordOrderObject:directions | WordOrderSubject:directions ]
+Down [ Player ] [ WordOrderverb:directions | WordOrderObject:directions | WordOrderSubject:directions ] -> [ Player Mode:VOS ] [ WordOrderverb:directions | WordOrderObject:directions | WordOrderSubject:directions ]
+
+(SOV = Baba You Is)
+Right [ Player ] [ WordOrderSubject:directions | WordOrderObject:directions | WordOrderverb:directions ] -> [ Player Mode:SOV ] [ WordOrderSubject:directions | WordOrderObject:directions | WordOrderverb:directions ]
+Down [ Player ] [ WordOrderSubject:directions | WordOrderObject:directions | WordOrderverb:directions ] -> [ Player Mode:SOV ] [ WordOrderSubject:directions | WordOrderObject:directions | WordOrderverb:directions ]
+
+(OSV = You Baba Is)
+Right [ Player ] [ WordOrderObject:directions | WordOrderSubject:directions | WordOrderverb:directions ] -> [ Player Mode:OSV ] [ WordOrderObject:directions | WordOrderSubject:directions | WordOrderverb:directions ]
+Down [ Player ] [ WordOrderObject:directions | WordOrderSubject:directions | WordOrderverb:directions ] -> [ Player Mode:OSV ] [ WordOrderObject:directions | WordOrderSubject:directions | WordOrderverb:directions ]
+
+(OVS = You Is Baba)
+Right [ Player ] [ WordOrderObject:directions | WordOrderverb:directions | WordOrderSubject:directions ] -> [ Player Mode:OVS ] [ WordOrderObject:directions | WordOrderverb:directions | WordOrderSubject:directions ]
+Down [ Player ] [ WordOrderObject:directions | WordOrderverb:directions | WordOrderSubject:directions ] -> [ Player Mode:OVS ] [ WordOrderObject:directions | WordOrderverb:directions | WordOrderSubject:directions ]
+
+(Basic)
+[ Mode:TextMode ] [ Player ] -> [ Mode:TextMode ] [ Player Marker ]
+[ Player no Marker ] -> [ Player no Marker Mode:SVO ]
+[ Marker ] -> [ ]
+
+=================
+(Activate rules)
+=================
+
+(SVO = Baba Is You)
+Right Rule Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Property:Rule:directions ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Property:Rule:directions RuleMarker:Rule:Noun ]
+Down Rule Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Property:Rule:directions ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Property:Rule:directions RuleMarker:Rule:Noun ]
+
+(VSO = Is Baba You)
+Right Rule Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Property:Rule:directions ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Property:Rule:directions RuleMarker:Rule:Noun ]
+Down Rule Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Property:Rule:directions ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Property:Rule:directions RuleMarker:Rule:Noun ]
+
+(VOS = Is You Baba)
+Right Rule Noun [ Mode:VOS ] [ Is:directions | Property:Rule:directions | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Property:Rule:directions RuleMarker:Rule:Noun | Object:Noun:Word:directions:Step ]
+Down Rule Noun [ Mode:VOS ] [ Is:directions | Property:Rule:directions | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Property:Rule:directions RuleMarker:Rule:Noun | Object:Noun:Word:directions:Step ]
+
+(SOV = Baba You Is)
+Right Rule Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Property:Rule:directions | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Property:Rule:directions RuleMarker:Rule:Noun | Is:directions ]
+Down Rule Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Property:Rule:directions | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Property:Rule:directions RuleMarker:Rule:Noun | Is:directions ]
+
+(OSV = You Baba Is)
+Right Rule Noun [ Mode:OSV ] [ Property:Rule:directions | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OSV ] [ Property:Rule:directions RuleMarker:Rule:Noun | Object:Noun:Word:directions:Step | Is:directions ]
+Down Rule Noun [ Mode:OSV ] [ Property:Rule:directions | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OSV ] [ Property:Rule:directions RuleMarker:Rule:Noun | Object:Noun:Word:directions:Step | Is:directions ]
+
+(OVS = You Is Baba)
+Right Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Property:Rule:directions RuleMarker:Rule:Noun | Is:directions | Object:Noun:Word:directions:Step ]
+Down Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Property:Rule:directions RuleMarker:Rule:Noun | Is:directions | Object:Noun:Word:directions:Step ]
+
+=================
+(Activate transformations)
+=================
+
+============
+(Run rules)
+============
+
+(You)
+Noun [ RuleMarker:You:Noun ] [ > Player ] [ Object:Noun:Real:directions:Step ] -> [ RuleMarker:You:Noun ] [ > Player ] [ > Object:Noun:Real:directions:Step ]
+late Noun [ RuleMarker:You:Noun ] [ Object:Noun:Real:directions:Step ] -> [ RuleMarker:You:Noun ] [ Object:Noun:Real:directions:Step IsYou ]
+
+(Win)
+late Noun [ RuleMarker:Win:Noun ] [ Object:Noun:Real:directions:Step ] -> [ RuleMarker:Win:Noun ] [ Object:Noun:Real:directions:Step IsWin ]
+
+(Stop)
+Noun [ RuleMarker:Stop:Noun ] [ Object:Noun:Real:directions:Step ] -> [ RuleMarker:Stop:Noun ] [ Object:Noun:Real:directions:Step MaybeCollision:NotNoun MaybeCollisionText IsStop ]
+
+(Push)
+Noun [ > Anything | Text ] -> [ > Anything | > Text > MaybeCollision:Noun ]
+Noun [ RuleMarker:Push:Noun ] [ > Anything | no IsStop Object:Noun:Real:directions:Step ] -> [ RuleMarker:Push:Noun ] [ > Anything | no IsStop > Object:Noun:Real:directions:Step > MaybeCollision:NotNoun > MaybeCollisionText ]
+
+(Text is always push)
+Noun [ > Anything | Text ] -> [ > Anything | > Text > MaybeCollision:Noun ]
+
+======================
+(Deal with Collision)
+======================
+
+Noun [ Object:Noun:Real:directions:Step MaybeCollision:Noun ] -> [ Object:Noun:Real:directions:Step ]
+[ Text MaybeCollisionText ] -> [ Text ]
+
+Noun [ stationary MaybeCollision:Noun ] -> [ stationary Collision:Noun ]
+Noun [ stationary MaybeCollisionText ] -> [ stationary CollisionText ]
+Noun [ moving MaybeCollision:Noun ] -> [ moving Collision:Noun ]
+Noun [ moving MaybeCollisionText ] -> [ moving CollisionText ]
+
+==========
+(Visuals)
+==========
+(Make things face the right way)
+Noun Step [ > Object:Noun:Real:directions:Step no Marker ] -> [ > Object:Noun:Real:>:NextStep Marker ]
+[ Marker ] -> [ ]
+
+==============
+WINCONDITIONS
+==============
+
+Some IsYou on IsWin
+
+=======
+LEVELS
+=======
+
+a..............
+......123......
+...............
+....biy.fim....
+....#######....
+.......o.......
+.....+.o.t.....
+.......o.......
+....#######....
+....wis.rip....
+...............
