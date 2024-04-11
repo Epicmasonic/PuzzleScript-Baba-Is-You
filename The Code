@@ -3,7 +3,6 @@ title Baba Is You x Word Order
 background_color #15181F
 
 run_rules_on_level_start
-realtime_interval 0.2
 
 =====
 TAGS
@@ -12,6 +11,7 @@ TAGS
 Noun = Baba Flag Wall Rock
 Wordiness = Real Word
 Rule = You Win Stop Push
+TransMode = From Into
 
 Wobble = W1 W2 W3	
 Step = S1 S2 S3 S4
@@ -51,6 +51,9 @@ Marker
 Transparent
 
 RuleMarker:Rule:Noun
+Transparent
+
+TransMarker:TransMode:Noun
 Transparent
 
 Player:Wobble
@@ -300,6 +303,7 @@ IsStop
 
 Marker
 Rule Noun -> RuleMarker:Rule:Noun
+TransMode Noun -> TransMarker:TransMode:Noun
 ActiveMarker
 
 Noun -> MaybeCollision:Noun
@@ -320,6 +324,7 @@ RULES
 
 (Clean up)
 [ RuleMarker:Rule:Noun ] -> [ ]
+[ TransMarker:TransMode:Noun ] -> [ ]
 [ ActiveMarker ] -> [ ]
 [ Mode:TextMode ] -> [ ]
 
@@ -395,7 +400,21 @@ Down Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:
 (Activate transformations)
 ===========================
 
+(SVO = Baba Is You)
+Right Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
+Down Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
 
+(VSO = Is Baba You)
+Right Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
+Down Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
+
+(VOS = Is You Baba)
+
+(SOV = Baba You Is)
+
+(OSV = You Baba Is)
+
+(OVS = You Is Baba)
 
 ============
 (Run rules)
@@ -462,6 +481,7 @@ a..............
 IWS..............
 SIW....#######...
 WSI..###.BIY.###.
+.....#.........#.
 .....#.........#.
 ..t..#.123a+.F.#.
 .FIM.#.........#.
