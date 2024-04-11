@@ -53,9 +53,6 @@ Transparent
 RuleMarker:Rule:Noun
 Transparent
 
-ObjectMarker:Noun
-Transparent
-
 Player:Wobble
 Transparent
 
@@ -304,7 +301,6 @@ IsStop
 Marker
 Rule Noun -> RuleMarker:Rule:Noun
 ActiveMarker
-Noun -> ObjectMarker:Noun
 
 Noun -> MaybeCollision:Noun
 MaybeCollisionText
@@ -395,9 +391,11 @@ Down Rule Noun [ Mode:OSV ] [ Property:Rule:directions | Object:Noun:Word:direct
 Right Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Property:Rule:directions RuleMarker:Rule:Noun | Is:directions | Object:Noun:Word:directions:Step ]
 Down Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Property:Rule:directions RuleMarker:Rule:Noun | Is:directions | Object:Noun:Word:directions:Step ]
 
-=================
+===========================
 (Activate transformations)
-=================
+===========================
+
+
 
 ============
 (Run rules)
