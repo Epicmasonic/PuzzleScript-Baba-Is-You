@@ -404,17 +404,43 @@ Down Rule Noun [ Mode:OVS ] [ Property:Rule:directions | Is:directions | Object:
 Right Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
 Down Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
 
+Right Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun ]
+Down Noun [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:SVO ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun ]
+
 (VSO = Is Baba You)
 Right Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
 Down Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun ]
 
+Right Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun ]
+Down Noun [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VSO ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun ]
+
 (VOS = Is You Baba)
+Right Noun [ Mode:VOS ] [ Is:directions | Object:NotNoun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Object:Noun:Word:directions:Step ]
+Down Noun [ Mode:VOS ] [ Is:directions | Object:NotNoun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Object:Noun:Word:directions:Step ]
+
+Right Noun [ Mode:VOS ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Object:Noun:Word:directions:Step ]
+Down Noun [ Mode:VOS ] [ Is:directions | Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step ] -> [ Mode:VOS ] [ Is:directions | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Object:Noun:Word:directions:Step ]
 
 (SOV = Baba You Is)
+Right Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Is:directions ]
+Down Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Is:directions ]
+
+Right Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Is:directions ]
+Down Noun [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:SOV ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Is:directions ]
 
 (OSV = You Baba Is)
+Right Noun [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Object:Noun:Word:directions:Step | Is:directions ]
+Down Noun [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Object:Noun:Word:directions:Step | Is:directions ]
+
+Right Noun [ Mode:OVS ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OVS ] [ Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Object:Noun:Word:directions:Step | Is:directions ]
+Down Noun [ Mode:OVS ] [ Object:Noun:Word:directions:Step | Object:Noun:Word:directions:Step | Is:directions ] -> [ Mode:OVS ] [ Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Object:Noun:Word:directions:Step | Is:directions ]
 
 (OVS = You Is Baba)
+Right Noun [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Is:directions | Object:Noun:Word:directions:Step ]
+Down Noun [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Object:NotNoun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:NotNoun | Is:directions | Object:Noun:Word:directions:Step ]
+
+Right Noun [ Mode:OVS ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Is:directions | Object:Noun:Word:directions:Step ]
+Down Noun [ Mode:OVS ] [ Object:Noun:Word:directions:Step | Is:directions | Object:Noun:Word:directions:Step ] -> [ Mode:OVS ] [ Object:Noun:Word:directions:Step TransMarker:From:Noun TransMarker:Into:Noun | Is:directions | Object:Noun:Word:directions:Step ]
 
 ============
 (Run rules)
