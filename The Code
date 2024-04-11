@@ -225,11 +225,11 @@ WordOrderVerb:directions
 
 WordOrderObject:directions
 #d9396a
-.000.
-.0.0.
-.0.0.
-.0.0.
-.000.
+0...0
+0.0.0
+0.0.0
+0.0.0
+0...0
 
 ==============
 (Decorations)
