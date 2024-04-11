@@ -1670,9 +1670,9 @@ CoolRock:W3
 CoolWall:Wobble:Connections
 Transparent
 
-==
+=======
 LEGEND
-==
+=======
 
 Decorations = CoolBaba:Wobble:Step:directions or CoolFlag:Wobble or CoolRock:Wobble or CoolWall:Wobble:Connections
 
